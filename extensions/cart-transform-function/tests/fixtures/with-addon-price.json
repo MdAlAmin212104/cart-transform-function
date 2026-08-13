@@ -14,14 +14,29 @@
                 "currencyCode": "USD"
               }
             },
-            "addonPrice": null,
+            "addonPrice": {
+              "value": "5.00"
+            },
             "addonPriceAlt": null
           }
         ]
       }
     },
     "output": {
-      "operations": []
+      "operations": [
+        {
+          "lineUpdate": {
+            "cartLineId": "gid://shopify/CartLine/1",
+            "price": {
+              "adjustment": {
+                "fixedPricePerUnit": {
+                  "amount": "15.00"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

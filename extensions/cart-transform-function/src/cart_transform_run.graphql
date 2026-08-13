@@ -3,13 +3,21 @@ query CartTransformRunInput {
     lines {
       id
       quantity
-      cost{
-        subtotalAmount{
+      cost {
+        amountPerQuantity {
           amount
           currencyCode
-          
         }
+      }
+      # _addon_price property
+      addonPrice: attribute(key: "_addon_price") {
+        value
+      }
+      # addon_price property (alternative without prefix)
+      addonPriceAlt: attribute(key: "addon_price") {
+        value
       }
     }
   }
 }
+
