@@ -1,0 +1,15 @@
+query CartTransformRunInput {
+  cart {
+    lines {
+      id
+      quantity
+      cost{
+        subtotalAmount{
+          amount
+          currencyCode
+          
+        }
+      }
+    }
+  }
+}
