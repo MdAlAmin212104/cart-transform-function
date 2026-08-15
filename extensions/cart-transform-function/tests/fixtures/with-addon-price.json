@@ -10,14 +10,29 @@
             "quantity": 1,
             "cost": {
               "amountPerQuantity": {
-                "amount": "10.00",
+                "amount": "100.00",
                 "currencyCode": "USD"
               }
             },
-            "addonPrice": {
-              "value": "5.00"
+            "merchandise": {
+              "__typename": "ProductVariant",
+              "id": "gid://shopify/ProductVariant/100",
+              "title": "Custom Product"
             },
-            "addonPriceAlt": null
+            "addonVariants": {
+              "value": "gid://shopify/ProductVariant/201,gid://shopify/ProductVariant/202"
+            },
+            "addonVariantsAlt": null,
+            "addons": null,
+            "addonsAlt": null,
+            "addonPrice": null,
+            "addonPriceAlt": null,
+            "bundleId": {
+              "value": "bundle_1718000000_abc12"
+            },
+            "configuredPrice": {
+              "value": "150.00"
+            }
           }
         ]
       }
@@ -25,15 +40,22 @@
     "output": {
       "operations": [
         {
-          "lineUpdate": {
+          "lineExpand": {
             "cartLineId": "gid://shopify/CartLine/1",
-            "price": {
-              "adjustment": {
-                "fixedPricePerUnit": {
-                  "amount": "15.00"
-                }
+            "expandedCartItems": [
+              {
+                "merchandiseId": "gid://shopify/ProductVariant/100",
+                "quantity": 1
+              },
+              {
+                "merchandiseId": "gid://shopify/ProductVariant/201",
+                "quantity": 1
+              },
+              {
+                "merchandiseId": "gid://shopify/ProductVariant/202",
+                "quantity": 1
               }
-            }
+            ]
           }
         }
       ]

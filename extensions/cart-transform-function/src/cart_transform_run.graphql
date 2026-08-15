@@ -9,15 +9,39 @@ query CartTransformRunInput {
           currencyCode
         }
       }
-      # _addon_price property
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          id
+          title
+        }
+      }
+      addonVariants: attribute(key: "_addon_variants") {
+        value
+      }
+      addonVariantsAlt: attribute(key: "addon_variants") {
+        value
+      }
+      addons: attribute(key: "_addons") {
+        value
+      }
+      addonsAlt: attribute(key: "addons") {
+        value
+      }
       addonPrice: attribute(key: "_addon_price") {
         value
       }
-      # addon_price property (alternative without prefix)
       addonPriceAlt: attribute(key: "addon_price") {
+        value
+      }
+      bundleId: attribute(key: "_bundle_id") {
+        value
+      }
+      configuredPrice: attribute(key: "_configured_price") {
         value
       }
     }
   }
 }
+
 

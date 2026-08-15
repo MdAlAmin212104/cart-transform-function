@@ -14,8 +14,19 @@
                 "currencyCode": "USD"
               }
             },
+            "merchandise": {
+              "__typename": "ProductVariant",
+              "id": "gid://shopify/ProductVariant/100",
+              "title": "Base Product"
+            },
+            "addonVariants": null,
+            "addonVariantsAlt": null,
+            "addons": null,
+            "addonsAlt": null,
             "addonPrice": null,
-            "addonPriceAlt": null
+            "addonPriceAlt": null,
+            "bundleId": null,
+            "configuredPrice": null
           }
         ]
       }
