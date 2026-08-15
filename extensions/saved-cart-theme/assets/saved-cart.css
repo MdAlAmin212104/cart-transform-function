@@ -1,0 +1,144 @@
+/* Saved Cart Theme Extension Styles */
+.saved-cart-btn-wrapper {
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.saved-cart-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: var(--saved-cart-btn-bg, #121212);
+  color: var(--saved-cart-btn-color, #ffffff);
+  border: 1px solid var(--saved-cart-btn-border, #121212);
+  border-radius: var(--saved-cart-radius, 6px);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.saved-cart-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.saved-cart-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Modal Styles */
+.saved-cart-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.saved-cart-modal-backdrop.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.saved-cart-modal-card {
+  background: #ffffff;
+  border-radius: 12px;
+  max-width: 480px;
+  width: 100%;
+  padding: 24px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: scale(0.95);
+  transition: transform 0.25s ease;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.saved-cart-modal-backdrop.is-active .saved-cart-modal-card {
+  transform: scale(1);
+}
+
+.saved-cart-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.saved-cart-modal-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.saved-cart-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.saved-cart-modal-close:hover {
+  color: #111827;
+}
+
+.saved-cart-share-box {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.saved-cart-share-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #f9fafb;
+  color: #374151;
+  outline: none;
+}
+
+.saved-cart-share-input:focus {
+  border-color: #2563eb;
+  background: #ffffff;
+}
+
+.saved-cart-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: savedCartSpin 0.8s linear infinite;
+}
+
+@keyframes savedCartSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -5,22 +5,41 @@ name = "cart-transform"
 application_url = "https://shopify.dev/apps/default-app-home"
 embedded = true
 
-[build]
-automatically_update_urls_on_dev = true
-
-[webhooks]
-api_version = "2026-07"
-
-[access.admin]
-direct_api_mode = "online"
-embedded_app_direct_api_access = true
-
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products,write_cart_transforms,read_cart_transforms"
+scopes = "read_cart_transforms,write_cart_transforms,write_products"
 
-[auth]
-redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
+[product.metafields.app.demo_info]
+type = "single_line_text_field"
+name = "Demo Source Info"
+description = "Tracks products created by the Shopify app template for development"
+
+  [product.metafields.app.demo_info.access]
+  admin = "merchant_read_write"
+
+[product.metafields.app.faq]
+name = "FAQ"
+description = "FAQ for this product"
+type = "metaobject_reference<$app:faq>"
+
+  [product.metafields.app.faq.access]
+  admin = "merchant_read_write"
+
+[metaobjects.app.example]
+name = "Example"
+description = "An example metaobject definition created by this template"
+
+  [metaobjects.app.example.access]
+  admin = "merchant_read_write"
+
+[metaobjects.app.example.fields.title]
+name = "Title"
+type = "single_line_text_field"
+required = true
+
+[metaobjects.app.example.fields.description]
+name = "Description"
+type = "multi_line_text_field"
 
 [metaobjects.app.faq]
 name = "FAQ"
@@ -39,13 +58,32 @@ required = true
 name = "Show on FAQ page"
 type = "boolean"
 
-[product.metafields.app.faq]
-name = "FAQ"
-description = "FAQ for this product"
-type = "metaobject_reference<$app:faq>"
+[webhooks]
+api_version = "2026-07"
 
-  [product.metafields.app.faq.access]
-  admin = "merchant_read_write"
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/app/uninstalled"
+  topics = [ "app/uninstalled" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/app/scopes_update"
+  topics = [ "app/scopes_update" ]
 
 [sidekick]
 extensions_summary = "Read FAQ entries stored in the app"
+
+[access.admin]
+direct_api_mode = "online"
+embedded_app_direct_api_access = true
+
+[auth]
+redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
+
+[app_proxy]
+url = "/api/proxy"
+subpath = "saved-cart"
+prefix = "apps"
+
+[build]
+automatically_update_urls_on_dev = true
+

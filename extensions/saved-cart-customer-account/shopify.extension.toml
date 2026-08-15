@@ -1,0 +1,12 @@
+api_version = "2026-07"
+
+[[extensions]]
+name = "My Saved Carts"
+handle = "saved-cart-customer-account"
+uid = "5f1279fa-86f5-f32a-028f-91d4dabaaaf4576eef6a"
+type = "ui_extension"
+description = "View and restore your saved carts"
+
+  [[extensions.targeting]]
+  module = "./src/SavedCartsBlock.ts"
+  target = "customer-account.order-index.block.render"
