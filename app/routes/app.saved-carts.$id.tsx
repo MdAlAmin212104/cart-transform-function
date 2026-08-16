@@ -173,7 +173,7 @@ export default function AdminSavedCartDetails() {
       </s-section>
 
       <s-section slot="aside" heading="Navigation">
-        <s-link href="/app/saved-carts">
+        <s-link href="/app">
           <s-button variant="secondary">← Back to All Saved Carts</s-button>
         </s-link>
       </s-section>

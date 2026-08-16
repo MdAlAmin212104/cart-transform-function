@@ -29,8 +29,8 @@ function parsePrice(priceStr: string | null | undefined): number | null {
 }
 
 export function cartTransformRun(input: CartTransformRunInput): CartTransformRunResult {
-  console.error("=================== [Cart Transform Run] ===================");
-  console.error(`Total Cart Lines: ${input.cart.lines.length}`);
+  //console.error("=================== [Cart Transform Run] ===================");
+  //console.error(`Total Cart Lines: ${input.cart.lines.length}`);
 
   const operations: Operation[] = [];
 
@@ -51,10 +51,10 @@ export function cartTransformRun(input: CartTransformRunInput): CartTransformRun
     const configuredPriceValue = line.configuredPrice?.value;
     const addonPriceValue = line.addonPrice?.value || line.addonPriceAlt?.value;
 
-    console.error(`Checking Line ID: ${line.id}`);
-    console.error(`Main Variant: ${mainVariantId}`);
-    console.error(`Raw Add-ons: "${rawAddonValue || ""}"`);
-    console.error(`Configured Price: "${configuredPriceValue || ""}"`);
+    //console.error(`Checking Line ID: ${line.id}`);
+    //console.error(`Main Variant: ${mainVariantId}`);
+    //console.error(`Raw Add-ons: "${rawAddonValue || ""}"`);
+    //console.error(`Configured Price: "${configuredPriceValue || ""}"`);
 
     // --- STRATEGY 1: Expand Operation (Bundling Main Variant + Add-on Variants) ---
     if (rawAddonValue && rawAddonValue.trim()) {
@@ -76,7 +76,7 @@ export function cartTransformRun(input: CartTransformRunInput): CartTransformRun
           })),
         ];
 
-        console.error(`Applying lineExpand for Line: ${line.id} with ${expandedCartItems.length} components`);
+        //console.error(`Applying lineExpand for Line: ${line.id} with ${expandedCartItems.length} components`);
 
         operations.push({
           lineExpand: {
@@ -105,7 +105,7 @@ export function cartTransformRun(input: CartTransformRunInput): CartTransformRun
 
     if (targetUnitPrice !== null && targetUnitPrice > 0 && targetUnitPrice !== originalUnitPrice) {
       const formattedAmount = targetUnitPrice.toFixed(2);
-      console.error(`Applying lineUpdate for Line: ${line.id} to Unit Price: $${formattedAmount}`);
+      //console.error(`Applying lineUpdate for Line: ${line.id} to Unit Price: $${formattedAmount}`);
 
       operations.push({
         lineUpdate: {
@@ -123,8 +123,8 @@ export function cartTransformRun(input: CartTransformRunInput): CartTransformRun
     }
   }
 
-  console.error(`Total Operations Generated: ${operations.length}`);
-  console.error("============================================================");
+  //console.error(`Total Operations Generated: ${operations.length}`);
+  //console.error("============================================================");
 
   return operations.length > 0 ? { operations } : NO_CHANGES;
 }

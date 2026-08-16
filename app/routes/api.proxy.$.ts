@@ -108,7 +108,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
     return jsonResponse({ success: false, error: "NOT_FOUND", message: `Unknown endpoint: ${subpath}` }, 404);
   } catch (error: any) {
-    console.error("[App Proxy Loader Error]", error);
+    //console.error("[App Proxy Loader Error]", error);
     return jsonResponse({
       success: false,
       error: "INTERNAL_ERROR",
@@ -191,7 +191,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
     return jsonResponse({ success: false, error: "METHOD_NOT_ALLOWED" }, 405);
   } catch (error: any) {
-    console.error("[App Proxy Action Error]", error);
+    //console.error("[App Proxy Action Error]", error);
     return jsonResponse({
       success: false,
       error: "SERVER_ERROR",

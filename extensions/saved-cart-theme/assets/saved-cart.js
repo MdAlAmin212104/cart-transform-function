@@ -68,7 +68,7 @@
 
       openSavedCartModal(fullShareUrl);
     } catch (err) {
-      console.error("[SavedCart Error]", err);
+      //console.error("[SavedCart Error]", err);
       alert(err.message || "An error occurred while saving your cart.");
     } finally {
       button.disabled = false;
@@ -244,7 +244,7 @@
         window.location.reload();
       }, 400);
     } catch (err) {
-      console.error("[AutoRestore Error]", err);
+      //console.error("[AutoRestore Error]", err);
       if (banner) banner.remove();
       showCartNotification(err.message || "Could not load shared cart products.", "error");
       cleanUrlToken();
