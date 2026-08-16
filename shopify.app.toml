@@ -2,61 +2,12 @@
 
 client_id = "a2916d511dd3ec278375de560ce70aff"
 name = "cart-transform"
-application_url = "https://shopify.dev/apps/default-app-home"
+application_url = "https://cart-transforms.up.railway.app"
 embedded = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = "read_cart_transforms,write_cart_transforms,write_products"
-
-[product.metafields.app.demo_info]
-type = "single_line_text_field"
-name = "Demo Source Info"
-description = "Tracks products created by the Shopify app template for development"
-
-  [product.metafields.app.demo_info.access]
-  admin = "merchant_read_write"
-
-[product.metafields.app.faq]
-name = "FAQ"
-description = "FAQ for this product"
-type = "metaobject_reference<$app:faq>"
-
-  [product.metafields.app.faq.access]
-  admin = "merchant_read_write"
-
-[metaobjects.app.example]
-name = "Example"
-description = "An example metaobject definition created by this template"
-
-  [metaobjects.app.example.access]
-  admin = "merchant_read_write"
-
-[metaobjects.app.example.fields.title]
-name = "Title"
-type = "single_line_text_field"
-required = true
-
-[metaobjects.app.example.fields.description]
-name = "Description"
-type = "multi_line_text_field"
-
-[metaobjects.app.faq]
-name = "FAQ"
-
-[metaobjects.app.faq.fields.question]
-name = "Question"
-type = "single_line_text_field"
-required = true
-
-[metaobjects.app.faq.fields.answer]
-name = "Answer"
-type = "multi_line_text_field"
-required = true
-
-[metaobjects.app.faq.fields.show_on_faq_page]
-name = "Show on FAQ page"
-type = "boolean"
 
 [webhooks]
 api_version = "2026-07"
@@ -69,15 +20,16 @@ api_version = "2026-07"
   uri = "/webhooks/app/scopes_update"
   topics = [ "app/scopes_update" ]
 
-[sidekick]
-extensions_summary = "Read FAQ entries stored in the app"
-
 [access.admin]
 direct_api_mode = "online"
 embedded_app_direct_api_access = true
 
 [auth]
-redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
+redirect_urls = [
+  "https://cart-transforms.up.railway.app/auth/callback",
+  "https://cart-transforms.up.railway.app/auth/shopify/callback",
+  "https://cart-transforms.up.railway.app/api/auth"
+]
 
 [app_proxy]
 url = "/api/proxy"
@@ -86,4 +38,3 @@ prefix = "apps"
 
 [build]
 automatically_update_urls_on_dev = true
-
