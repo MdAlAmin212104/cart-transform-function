@@ -252,13 +252,13 @@
   }
 
   function init() {
-    document.querySelectorAll("[data-saved-cart-trigger]").forEach(function (btn) {
-      if (btn.dataset.initialized) return;
-      btn.dataset.initialized = "true";
-      btn.addEventListener("click", function (e) {
+    // Document level event delegation for dynamic / AJAX cart drawer support
+    document.addEventListener("click", function (e) {
+      var trigger = e.target.closest("[data-saved-cart-trigger]");
+      if (trigger) {
         e.preventDefault();
-        handleSaveCart(btn);
-      });
+        handleSaveCart(trigger);
+      }
     });
 
     // Handle direct /cart?token=... auto restore

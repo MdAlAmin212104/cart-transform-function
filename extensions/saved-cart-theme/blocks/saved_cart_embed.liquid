@@ -1,0 +1,15 @@
+{{ 'saved-cart.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'saved-cart.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Saved Cart Core Embed",
+  "target": "body",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Enables Saved Cart scripts and styling across your store automatically."
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,24 @@
+{% comment %}
+  Saved Cart Button Snippet
+  Usage in App Blocks: {% render 'save_cart_button' %}
+{% endcomment %}
+
+<div class="saved-cart-btn-wrapper {{ class }}">
+  <button
+    type="button"
+    class="saved-cart-button {{ button_style }}"
+    data-saved-cart-trigger
+    {% if customer %}
+      data-customer-id="{{ customer.id }}"
+      data-customer-email="{{ customer.email }}"
+      data-customer-name="{{ customer.name }}"
+    {% endif %}
+    style="{% if button_bg_color %}--saved-cart-btn-bg: {{ button_bg_color }};{% endif %} {% if button_text_color %}--saved-cart-btn-color: {{ button_text_color }};{% endif %} {% if border_radius %}--saved-cart-radius: {{ border_radius }}px;{% endif %}"
+  >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+    </svg>
+    <span>{{ button_label | default: 'Share Cart Link' }}</span>
+  </button>
+</div>
